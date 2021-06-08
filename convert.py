@@ -38,7 +38,7 @@ def is_id_char(char):
     return char == '_' or 'A' <= char.upper() <= 'Z' or '1' <= char <= '9' or char == '0'
 
 
-# same as find, but ensurer that the name_id is and identifier (i.e. it's bounded by non name identifier characters)
+# same as find, but ensures that the name_id is and identifier (i.e. it's bounded by non name identifier characters)
 def find_identifier(string, name_id, pos=0):
     found_pos = string.find(name_id, pos)
     found = False
