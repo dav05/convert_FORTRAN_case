@@ -147,7 +147,7 @@ class CProtectedWords:
         return self.pos_next_word_start <= pos <= self.pos_next_word_end
 
 
-# converts a entire file
+# converts an entire file
 def process_file(folder, file_in, file_out, char_operator):
     path_name_in = folder + '/' + file_in
     path_name_out = folder + '/' + file_out
