@@ -1,8 +1,8 @@
 # convert_FORTRAN_case
-python3 scrip for case conversion of source code files writen in fixed form fortran
+python3 script for case conversion of source code files written in fixed form fortran.
 
 
- python3 scrip for case conversion of source code files writen in
+ python3 scrip for case conversion of source code files written in
  fixed form fortran. Ignores comments, strings, escape
  sequences within strings and some special words.
 
