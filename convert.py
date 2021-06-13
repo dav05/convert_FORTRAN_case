@@ -148,17 +148,11 @@ class CProtectedWords:
 
 
 # converts an entire file
-def process_file(folder, file_in, file_out, char_operator):
-    path_name_in = folder + '/' + file_in
-    path_name_out = folder + '/' + file_out
-
-    # print(f'Processing: {path_name_in}')
-    # print(f'Processing: {path_name_out}')
-
-    with open(path_name_in, 'r') as obj_file_in:
+def process_file(file_in, file_out, char_operator):
+    with open(file_in, 'r') as obj_file_in:
         lines = obj_file_in.readlines()
 
-    with open(path_name_out, 'w') as obj_file_out:
+    with open(file_out, 'w') as obj_file_out:
         for line_in in lines:
             line_out = parse_and_convert_line(line_in, char_operator)
             obj_file_out.write(line_out)
@@ -227,8 +221,6 @@ def parse_and_convert_line(line_in, char_operator):
 
 # parse the arguments passed to the script
 def parse_script_arguments():
-    folder = os.getcwd()  # current working directory
-
     parser = argparse.ArgumentParser(description='Converts a fixed form fortran file to upper or lower case.')
     parser.add_argument('-q', '--quiet', action='store_true', default=False,
                         help='do not echo any output')
@@ -246,17 +238,17 @@ def parse_script_arguments():
         n_operation_mode = CCharOperator.upper
     if options.lower:
         n_operation_mode = CCharOperator.lower
-    return [n_operation_mode, folder, file, options.quiet]
+    return [n_operation_mode, file, options.quiet]
 
 
 # the main function
 def main():
-    [n_mode, folder_name, file_name, quiet] = parse_script_arguments()
+    [n_mode, file_name, quiet] = parse_script_arguments()
 
     f_in = file_name
     f_out = file_name
     operator = CCharOperator(n_mode)
-    process_file(folder_name, f_in, f_out, operator)
+    process_file(f_in, f_out, operator)
     if not quiet:
         operator.statistics.print()
 
